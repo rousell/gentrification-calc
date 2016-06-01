@@ -5,7 +5,9 @@ using System.Web;
 
 namespace gentrification_calc.Models
 {
-    public class ZipCodeModel
+    public class ZipCode
     {
+        public int ZipCodeDigit { get; set; }
+        public int ZipCodeId { get; set; }
     }
 }

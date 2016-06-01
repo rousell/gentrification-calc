@@ -7,5 +7,15 @@ namespace gentrification_calc.DAL
 {
     public class CalcRepository
     {
+        public CalcContext context { get; set; }
+        public CalcRepository()
+        {
+            context = new CalcContext();
+        }
+
+        public CalcRepository(CalcContext _context)
+        {
+            context = _context;
+        }
     }
 }

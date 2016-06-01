@@ -10,6 +10,6 @@ namespace gentrification_calc.DAL
     public class CalcContext : ApplicationDbContext
     {
         public virtual DbSet<ZipCode> ZipCodes { get; set; }
-        public virtual DbSet<Demographic> DemographicsInfo { get; set; }
+        public virtual DbSet<Demographic> Demographics { get; set; }
     }
 }

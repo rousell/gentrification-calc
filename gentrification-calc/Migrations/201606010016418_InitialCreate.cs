@@ -12,12 +12,23 @@ namespace gentrification_calc.Migrations
                 c => new
                     {
                         DemographicId = c.Int(nullable: false, identity: true),
-                        ZipCodeDigit = c.Int(nullable: false),
                         DemographicYear = c.Int(nullable: false),
                         Population = c.Int(nullable: false),
                         Race = c.String(),
+                        Zip_ZipCodeId = c.Int(),
                     })
-                .PrimaryKey(t => t.DemographicId);
+                .PrimaryKey(t => t.DemographicId)
+                .ForeignKey("dbo.ZipCodes", t => t.Zip_ZipCodeId)
+                .Index(t => t.Zip_ZipCodeId);
+            
+            CreateTable(
+                "dbo.ZipCodes",
+                c => new
+                    {
+                        ZipCodeId = c.Int(nullable: false, identity: true),
+                        ZipCodeDigit = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ZipCodeId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -87,15 +98,6 @@ namespace gentrification_calc.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
-            CreateTable(
-                "dbo.ZipCodes",
-                c => new
-                    {
-                        ZipCodeId = c.Int(nullable: false, identity: true),
-                        ZipCodeDigit = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ZipCodeId);
-            
         }
         
         public override void Down()
@@ -104,18 +106,20 @@ namespace gentrification_calc.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Demographics", "Zip_ZipCodeId", "dbo.ZipCodes");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropTable("dbo.ZipCodes");
+            DropIndex("dbo.Demographics", new[] { "Zip_ZipCodeId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.ZipCodes");
             DropTable("dbo.Demographics");
         }
     }

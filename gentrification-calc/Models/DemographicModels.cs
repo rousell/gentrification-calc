@@ -7,7 +7,7 @@ namespace gentrification_calc.Models
 {
     public class Demographic
     {
-        public int ZipCodeDigit { get; set; }
+        public ZipCode Zip { get; set; }
         public int DemographicId { get; set; }
         public int DemographicYear { get; set; }
         public int Population { get; set; }

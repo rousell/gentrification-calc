@@ -12,7 +12,7 @@ namespace gentrification_calc.Migrations
                 c => new
                     {
                         DemographicId = c.Int(nullable: false, identity: true),
-                        ZipCode = c.Int(nullable: false),
+                        ZipCodeDigit = c.Int(nullable: false),
                         DemographicYear = c.Int(nullable: false),
                         Population = c.Int(nullable: false),
                         Race = c.String(),

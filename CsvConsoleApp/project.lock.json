@@ -2,41 +2,8 @@
   "locked": false,
   "version": 2,
   "targets": {
-    "DNX,Version=v4.5.1": {
-      "CsvHelper/2.14.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net45/CsvHelper.dll": {}
-        },
-        "runtime": {
-          "lib/net45/CsvHelper.dll": {}
-        }
-      }
-    },
+    "DNX,Version=v4.5.1": {},
     "DNXCore,Version=v5.0": {
-      "CsvHelper/2.14.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Text.RegularExpressions": "4.0.11-beta-23516"
-        },
-        "compile": {
-          "lib/dotnet5.4/CsvHelper.dll": {}
-        },
-        "runtime": {
-          "lib/dotnet5.4/CsvHelper.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.1-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -220,14 +187,14 @@
           "lib/DNXCore50/System.Reflection.Primitives.dll": {}
         }
       },
-      "System.Reflection.TypeExtensions/4.1.0-beta-23516": {
+      "System.Reflection.TypeExtensions/4.0.0": {
         "type": "package",
         "dependencies": {
           "System.Reflection": "4.0.0",
           "System.Runtime": "4.0.0"
         },
         "compile": {
-          "ref/dotnet5.1/System.Reflection.TypeExtensions.dll": {}
+          "ref/dotnet/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/DNXCore50/System.Reflection.TypeExtensions.dll": {}
@@ -307,23 +274,6 @@
           "ref/dotnet/System.Text.Encoding.dll": {}
         }
       },
-      "System.Text.RegularExpressions/4.0.11-beta-23516": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.0.10",
-          "System.Globalization": "4.0.10",
-          "System.Resources.ResourceManager": "4.0.0",
-          "System.Runtime": "4.0.20",
-          "System.Runtime.Extensions": "4.0.10",
-          "System.Threading": "4.0.10"
-        },
-        "compile": {
-          "ref/dotnet5.4/System.Text.RegularExpressions.dll": {}
-        },
-        "runtime": {
-          "lib/dotnet5.4/System.Text.RegularExpressions.dll": {}
-        }
-      },
       "System.Threading/4.0.11-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -344,58 +294,9 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x86": {
-      "CsvHelper/2.14.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net45/CsvHelper.dll": {}
-        },
-        "runtime": {
-          "lib/net45/CsvHelper.dll": {}
-        }
-      }
-    },
-    "DNX,Version=v4.5.1/win7-x64": {
-      "CsvHelper/2.14.2": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net45/CsvHelper.dll": {}
-        },
-        "runtime": {
-          "lib/net45/CsvHelper.dll": {}
-        }
-      }
-    },
+    "DNX,Version=v4.5.1/win7-x86": {},
+    "DNX,Version=v4.5.1/win7-x64": {},
     "DNXCore,Version=v5.0/win7-x86": {
-      "CsvHelper/2.14.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Text.RegularExpressions": "4.0.11-beta-23516"
-        },
-        "compile": {
-          "lib/dotnet5.4/CsvHelper.dll": {}
-        },
-        "runtime": {
-          "lib/dotnet5.4/CsvHelper.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.1-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -629,14 +530,14 @@
           "lib/DNXCore50/System.Reflection.Primitives.dll": {}
         }
       },
-      "System.Reflection.TypeExtensions/4.1.0-beta-23516": {
+      "System.Reflection.TypeExtensions/4.0.0": {
         "type": "package",
         "dependencies": {
           "System.Reflection": "4.0.0",
           "System.Runtime": "4.0.0"
         },
         "compile": {
-          "ref/dotnet5.1/System.Reflection.TypeExtensions.dll": {}
+          "ref/dotnet/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/DNXCore50/System.Reflection.TypeExtensions.dll": {}
@@ -730,23 +631,6 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Text.Encoding.Extensions.dll": {}
-        }
-      },
-      "System.Text.RegularExpressions/4.0.11-beta-23516": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.0.10",
-          "System.Globalization": "4.0.10",
-          "System.Resources.ResourceManager": "4.0.0",
-          "System.Runtime": "4.0.20",
-          "System.Runtime.Extensions": "4.0.10",
-          "System.Threading": "4.0.10"
-        },
-        "compile": {
-          "ref/dotnet5.4/System.Text.RegularExpressions.dll": {}
-        },
-        "runtime": {
-          "lib/dotnet5.4/System.Text.RegularExpressions.dll": {}
         }
       },
       "System.Threading/4.0.11-beta-23516": {
@@ -773,23 +657,6 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x64": {
-      "CsvHelper/2.14.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Text.RegularExpressions": "4.0.11-beta-23516"
-        },
-        "compile": {
-          "lib/dotnet5.4/CsvHelper.dll": {}
-        },
-        "runtime": {
-          "lib/dotnet5.4/CsvHelper.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.1-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -1023,14 +890,14 @@
           "lib/DNXCore50/System.Reflection.Primitives.dll": {}
         }
       },
-      "System.Reflection.TypeExtensions/4.1.0-beta-23516": {
+      "System.Reflection.TypeExtensions/4.0.0": {
         "type": "package",
         "dependencies": {
           "System.Reflection": "4.0.0",
           "System.Runtime": "4.0.0"
         },
         "compile": {
-          "ref/dotnet5.1/System.Reflection.TypeExtensions.dll": {}
+          "ref/dotnet/System.Reflection.TypeExtensions.dll": {}
         },
         "runtime": {
           "lib/DNXCore50/System.Reflection.TypeExtensions.dll": {}
@@ -1124,23 +991,6 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Text.Encoding.Extensions.dll": {}
-        }
-      },
-      "System.Text.RegularExpressions/4.0.11-beta-23516": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.0.10",
-          "System.Globalization": "4.0.10",
-          "System.Resources.ResourceManager": "4.0.0",
-          "System.Runtime": "4.0.20",
-          "System.Runtime.Extensions": "4.0.10",
-          "System.Threading": "4.0.10"
-        },
-        "compile": {
-          "ref/dotnet5.4/System.Text.RegularExpressions.dll": {}
-        },
-        "runtime": {
-          "lib/dotnet5.4/System.Text.RegularExpressions.dll": {}
         }
       },
       "System.Threading/4.0.11-beta-23516": {
@@ -1168,27 +1018,6 @@
     }
   },
   "libraries": {
-    "CsvHelper/2.14.2": {
-      "type": "package",
-      "sha512": "9cT13qnA+ZWruzeBW/wxETjdo3KiEVxXj9SpoC7kpr5hIGB+Iaqzshgn8a4jWmlaKmrsMkEX9vyt1y4gY/HKwg==",
-      "files": [
-        "CsvHelper.2.14.2.nupkg",
-        "CsvHelper.2.14.2.nupkg.sha512",
-        "CsvHelper.nuspec",
-        "lib/dotnet5.4/CsvHelper.dll",
-        "lib/dotnet5.4/CsvHelper.xml",
-        "lib/net20/CsvHelper.dll",
-        "lib/net20/CsvHelper.xml",
-        "lib/net35/CsvHelper.dll",
-        "lib/net35/CsvHelper.xml",
-        "lib/net40/CsvHelper.dll",
-        "lib/net40/CsvHelper.xml",
-        "lib/net45/CsvHelper.dll",
-        "lib/net45/CsvHelper.xml",
-        "lib/portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+Xamarin.iOS10+MonoTouch10/CsvHelper.dll",
-        "lib/portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+Xamarin.iOS10+MonoTouch10/CsvHelper.xml"
-      ]
-    },
     "Microsoft.CSharp/4.0.1-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -1804,10 +1633,10 @@
         "System.Reflection.Primitives.nuspec"
       ]
     },
-    "System.Reflection.TypeExtensions/4.1.0-beta-23516": {
+    "System.Reflection.TypeExtensions/4.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "vA+eepDQ8ZFRodTHc+w8nBTkUqD+rEgirRR38tW6Z/uCDTzBPHGg6TqhqBhmY4wdWsT8/7fjwFPb7/dxldQW7g==",
+      "sha512": "YRM/msNAM86hdxPyXcuZSzmTO0RQFh7YMEPBLTY8cqXvFPYIx2x99bOyPkuU81wRYQem1c1HTkImQ2DjbOBfew==",
       "files": [
         "lib/DNXCore50/System.Reflection.TypeExtensions.dll",
         "lib/MonoAndroid10/_._",
@@ -1816,25 +1645,25 @@
         "lib/netcore50/System.Reflection.TypeExtensions.dll",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
-        "ref/dotnet5.1/de/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/es/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/fr/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/it/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/ja/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/ko/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/ru/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/System.Reflection.TypeExtensions.dll",
-        "ref/dotnet5.1/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/zh-hans/System.Reflection.TypeExtensions.xml",
-        "ref/dotnet5.1/zh-hant/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/de/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/es/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/fr/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/it/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/ja/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/ko/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/ru/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/System.Reflection.TypeExtensions.dll",
+        "ref/dotnet/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/zh-hans/System.Reflection.TypeExtensions.xml",
+        "ref/dotnet/zh-hant/System.Reflection.TypeExtensions.xml",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net46/System.Reflection.TypeExtensions.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "runtimes/win8-aot/lib/netcore50/System.Reflection.TypeExtensions.dll",
-        "System.Reflection.TypeExtensions.4.1.0-beta-23516.nupkg",
-        "System.Reflection.TypeExtensions.4.1.0-beta-23516.nupkg.sha512",
+        "System.Reflection.TypeExtensions.4.0.0.nupkg",
+        "System.Reflection.TypeExtensions.4.0.0.nupkg.sha512",
         "System.Reflection.TypeExtensions.nuspec"
       ]
     },
@@ -2161,67 +1990,6 @@
         "System.Text.Encoding.Extensions.nuspec"
       ]
     },
-    "System.Text.RegularExpressions/4.0.11-beta-23516": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "Iz3942FXA47VxsuJTBq4aA/gevsbdMhyUnQD6Y0aHt57oP6KAwZLaxVtrRzB03yxh6oGBlvQfxBlsXWnLLj4gg==",
-      "files": [
-        "lib/dotnet5.4/System.Text.RegularExpressions.dll",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Text.RegularExpressions.dll",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "ref/dotnet5.1/de/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/es/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/fr/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/it/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/ja/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/ko/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/ru/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/System.Text.RegularExpressions.dll",
-        "ref/dotnet5.1/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/zh-hans/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.1/zh-hant/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/de/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/es/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/fr/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/it/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/ja/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/ko/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/ru/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/System.Text.RegularExpressions.dll",
-        "ref/dotnet5.4/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/zh-hans/System.Text.RegularExpressions.xml",
-        "ref/dotnet5.4/zh-hant/System.Text.RegularExpressions.xml",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/de/System.Text.RegularExpressions.xml",
-        "ref/netcore50/es/System.Text.RegularExpressions.xml",
-        "ref/netcore50/fr/System.Text.RegularExpressions.xml",
-        "ref/netcore50/it/System.Text.RegularExpressions.xml",
-        "ref/netcore50/ja/System.Text.RegularExpressions.xml",
-        "ref/netcore50/ko/System.Text.RegularExpressions.xml",
-        "ref/netcore50/ru/System.Text.RegularExpressions.xml",
-        "ref/netcore50/System.Text.RegularExpressions.dll",
-        "ref/netcore50/System.Text.RegularExpressions.xml",
-        "ref/netcore50/zh-hans/System.Text.RegularExpressions.xml",
-        "ref/netcore50/zh-hant/System.Text.RegularExpressions.xml",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "System.Text.RegularExpressions.4.0.11-beta-23516.nupkg",
-        "System.Text.RegularExpressions.4.0.11-beta-23516.nupkg.sha512",
-        "System.Text.RegularExpressions.nuspec"
-      ]
-    },
     "System.Threading/4.0.11-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -2366,9 +2134,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "": [
-      "CsvHelper >= 2.14.2"
-    ],
+    "": [],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": [
       "Microsoft.CSharp >= 4.0.1-beta-23516",

@@ -1,4 +1,4 @@
-{
+﻿{
   "version": "1.0.0-*",
   "description": "CsvConsoleApp Console Application",
   "authors": [ "NSSStudent" ],
@@ -11,7 +11,6 @@
   },
 
   "dependencies": {
-    "CsvHelper": "2.14.2"
   },
 
   "commands": {

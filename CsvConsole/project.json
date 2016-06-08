@@ -1,6 +1,6 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "CsvConsoleApp Console Application",
+  "description": "CsvConsole Console Application",
   "authors": [ "NSSStudent" ],
   "tags": [ "" ],
   "projectUrl": "",
@@ -14,7 +14,7 @@
   },
 
   "commands": {
-    "CsvConsoleApp": "CsvConsoleApp"
+    "CsvConsole": "CsvConsole"
   },
 
   "frameworks": {

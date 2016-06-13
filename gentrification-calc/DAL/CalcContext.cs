@@ -11,5 +11,6 @@ namespace gentrification_calc.DAL
     {
         public virtual DbSet<ZipCode> ZipCodes { get; set; }
         public virtual DbSet<Demographic> Demographics { get; set; }
+        public virtual DbSet<PopulationYear> PopulationYears { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace gentrification_calc.Migrations
         protected override void Seed(gentrification_calc.DAL.CalcContext context)
         {
 
+
             context.ZipCodes.AddOrUpdate(
                 zipcode => zipcode.ZipCodeDigit,
                 new ZipCode { ZipCodeDigit = 37013 },

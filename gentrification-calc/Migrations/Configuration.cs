@@ -20,65 +20,33 @@ namespace gentrification_calc.Migrations
         protected override void Seed(gentrification_calc.DAL.CalcContext context)
         {
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourceName = "gentrification-calc.DAL.SeedData.ACS_2011_Cleaned.csv";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                string resourceName = "gentrification-calc.DAL.SeedData.ACS_2011_Cleaned.csv";
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
                 {
-                    CsvReader csvReader = new CsvReader(reader);
-
-                    IEnumerable<PopulationYear> myData = csvReader.GetRecords<PopulationYear>();
-
-                    csvReader.Configuration.WillThrowOnMissingField = false;
-                    var acs = csvReader.GetRecords<PopulationYear>().ToArray();
-                    context.PopulationYears.AddOrUpdate(z => z.Zip, acs);
-
-                    while (csvReader.Read() ){
-                        int[] zipFromCsv = csvReader.GetField<int[]>(0);
-                        for (int i = 0; i < zipFromCsv.Length; i++)
-                        {
-                            int zipField = zipFromCsv[i];
-                            var totalField = csvReader.GetField<string>(1);
-                            var whitePopField = csvReader.GetField<string>(2);
-
-                        }
-
-                    }
-
-                }
-            }
-
-            /*
-            resourceName = "SeedingDataFromCSV.Domain.SeedData.provincestates.csv";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
-                {
-                    CsvReader csvReader = new CsvReader(reader);
-                    csvReader.Configuration.WillThrowOnMissingField = false;
-                    while (csvReader.Read())
+                    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
                     {
-                        var provinceState = csvReader.GetRecord<ProvinceState>();
-                        var countryCode = csvReader.GetField<string>("CountryCode");
-                        provinceState.Country = context.Countries.Local.Single(c => c.Code == countryCode);
-                        context.ProvinceStates.AddOrUpdate(p => p.Code, provinceState);
+                        CsvReader csvReader = new CsvReader(reader);
+                        csvReader.Configuration.WillThrowOnMissingField = false;
+                        while (csvReader.Read()) {
+                            IEnumerable<PopulationYear> myData = csvReader.GetRecords<PopulationYear>();
+                        ///context.PopulationYears.AddOrUpdate(p => )
+                        }
                     }
                 }
-            }
-            */
 
-            context.Demographics.AddOrUpdate(
-                demographic => demographic.Race,
-                new Demographic { Race = "TotalPopulation" },
-                new Demographic { Race = "White"},
-                new Demographic { Race = "BlackorAfricanAmerican"},
-                new Demographic { Race = "AmericanIndianandAlaskaNative"},
-                new Demographic { Race = "Asian"},
-                new Demographic { Race = "NativeHawaiianandOtherPacificIslander"},
-                new Demographic { Race = "Other"},
-                new Demographic { Race = "TwoorMoreRaces"}
-            );
+
+                context.Demographics.AddOrUpdate(
+                    demographic => demographic.Race,
+                    new Demographic { Race = "TotalPopulation" },
+                    new Demographic { Race = "White" },
+                    new Demographic { Race = "BlackorAfricanAmerican" },
+                    new Demographic { Race = "AmericanIndianandAlaskaNative" },
+                    new Demographic { Race = "Asian" },
+                    new Demographic { Race = "NativeHawaiianandOtherPacificIslander" },
+                    new Demographic { Race = "Other" },
+                    new Demographic { Race = "TwoorMoreRaces" }
+                );
 
             context.ZipCodes.AddOrUpdate(
                 zipcode => zipcode.ZipCodeDigit,

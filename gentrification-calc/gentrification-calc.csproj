@@ -306,6 +306,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="DAL\SeedData\ACS_2011_Cleaned.csv" />
+    <Content Include="DAL\SeedData\ACS_2012_Cleaned.csv" />
+    <Content Include="DAL\SeedData\ACS_2013_Cleaned.csv" />
+    <Content Include="DAL\SeedData\ACS_2014_Cleaned.csv" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -335,7 +339,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DAL\SeedData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

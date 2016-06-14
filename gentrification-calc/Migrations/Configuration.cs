@@ -1,11 +1,15 @@
 namespace gentrification_calc.Migrations
 {
+    using CsvHelper;
     using Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
-
+    using System.Reflection;
+    using System.Text;
     internal sealed class Configuration : DbMigrationsConfiguration<gentrification_calc.DAL.CalcContext>
     {
         public Configuration()
@@ -15,6 +19,55 @@ namespace gentrification_calc.Migrations
 
         protected override void Seed(gentrification_calc.DAL.CalcContext context)
         {
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string resourceName = "gentrification-calc.DAL.SeedData.ACS_2011_Cleaned.csv";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    CsvReader csvReader = new CsvReader(reader);
+
+                    IEnumerable<PopulationYear> myData = csvReader.GetRecords<PopulationYear>();
+
+                    csvReader.Configuration.WillThrowOnMissingField = false;
+                    var acs = csvReader.GetRecords<PopulationYear>().ToArray();
+                    context.PopulationYears.AddOrUpdate(z => z.Zip, acs);
+
+                    while (csvReader.Read() ){
+                        int[] zipFromCsv = csvReader.GetField<int[]>(0);
+                        for (int i = 0; i < zipFromCsv.Length; i++)
+                        {
+                            int zipField = zipFromCsv[i];
+                            var totalField = csvReader.GetField<string>(1);
+                            var whitePopField = csvReader.GetField<string>(2);
+
+                        }
+
+                    }
+
+                }
+            }
+
+            /*
+            resourceName = "SeedingDataFromCSV.Domain.SeedData.provincestates.csv";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    CsvReader csvReader = new CsvReader(reader);
+                    csvReader.Configuration.WillThrowOnMissingField = false;
+                    while (csvReader.Read())
+                    {
+                        var provinceState = csvReader.GetRecord<ProvinceState>();
+                        var countryCode = csvReader.GetField<string>("CountryCode");
+                        provinceState.Country = context.Countries.Local.Single(c => c.Code == countryCode);
+                        context.ProvinceStates.AddOrUpdate(p => p.Code, provinceState);
+                    }
+                }
+            }
+            */
+
             context.Demographics.AddOrUpdate(
                 demographic => demographic.Race,
                 new Demographic { Race = "TotalPopulation" },

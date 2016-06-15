@@ -20,30 +20,6 @@ namespace GentrificationCalc.Migrations
 
         protected override void Seed(GentrificationCalc.DAL.CalcContext context)
         {
-            context.Database.Log = Console.Write;
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS_2011_Cleaned.csv";
-            using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
-            {
-                CsvReader csvReader = new CsvReader(reader);
-                csvReader.Configuration.WillThrowOnMissingField = false;
-                while (csvReader.Read())
-                {
-                    var myData = csvReader.GetRecords<PopulationYear>().ToArray();
-                    //context.PopulationYears.AddOrUpdate(p => p.Id, myData);
-                    /*foreach(var item in myData)
-                    {
-
-                        context.PopulationYears.AddOrUpdate(pop => pop.Id,
-                            new PopulationYear { TotalPopulation = item.TotalPopulation }
-                        ); 
-                    }*/
-
-
-                    context.PopulationYears.AddOrUpdate(p => p.Id, myData);           
-                }
-            }
-
 
                 context.Demographics.AddOrUpdate(
                     demographic => demographic.Race,

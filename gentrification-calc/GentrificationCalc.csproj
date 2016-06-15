@@ -276,9 +276,6 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <EmbeddedResource Include="DAL\SeedData\ACS_2011_Cleaned.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -308,11 +305,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="DAL\SeedData\ACS_2012_Cleaned.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DAL\SeedData\ACS_2013_Cleaned.csv" />
-    <EmbeddedResource Include="DAL\SeedData\ACS_2014_Cleaned.csv" />
+    <EmbeddedResource Include="DAL\SeedData\ACS2011_Cleaned.csv" />
+    <EmbeddedResource Include="DAL\SeedData\ACS2012_Cleaned.csv" />
+    <EmbeddedResource Include="DAL\SeedData\ACS2013_Cleaned.csv" />
+    <EmbeddedResource Include="DAL\SeedData\ACS2014_Cleaned.csv" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

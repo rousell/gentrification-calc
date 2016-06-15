@@ -15,27 +15,25 @@ namespace GentrificationCalc.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(GentrificationCalc.DAL.CalcContext context)
         {
             context.Database.Log = Console.Write;
             Assembly assembly = Assembly.GetExecutingAssembly();
-            ///string resourceName = "GentrificationCalc.App_Data.ACS2011Cleaned.csv";
-            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\App_Data\\ACS2011Cleaned.csv";
-            //string resourcePath = "~/App_Data/ACS2011Cleaned.csv";
+            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2011Cleaned.csv";
+
             var x = assembly.GetManifestResourceNames();
-                //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                //{
-                    using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
-                    {
-                        CsvReader csvReader = new CsvReader(reader);
-                        csvReader.Configuration.WillThrowOnMissingField = false;
-                        while (csvReader.Read()) {
-                            var myData = csvReader.GetRecords<PopulationYear>();
-                            
-                            foreach( var item in myData)
+            using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
+            {
+                CsvReader csvReader = new CsvReader(reader);
+                csvReader.Configuration.WillThrowOnMissingField = false;
+                while (csvReader.Read())
+                {
+                    var myData = csvReader.GetRecords<PopulationYear>();
+                    
+                    foreach(var item in myData)
                     {
                         context.PopulationYears.AddOrUpdate(pop => pop.Id,
                             new PopulationYear { TotalPopulation = item.TotalPopulation }
@@ -43,10 +41,10 @@ namespace GentrificationCalc.Migrations
                     }
 
 
-                    context.PopulationYears.AddOrUpdate(p => p.Id, myData.ToArray());           
-                        }
-                    }
-                //}
+            context.PopulationYears.AddOrUpdate(p => p.Id, myData.ToArray());           
+                }
+            }
+            //}
 
 
                 context.Demographics.AddOrUpdate(
@@ -102,19 +100,6 @@ namespace GentrificationCalc.Migrations
                 new ZipCode { ZipCodeDigit = 37243 },
                 new ZipCode { ZipCodeDigit = 37246 }
             );
-
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
         }
     }
 }

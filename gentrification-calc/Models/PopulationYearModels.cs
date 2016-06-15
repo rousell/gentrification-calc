@@ -8,10 +8,11 @@ namespace GentrificationCalc.Models
     public class PopulationYear
     {
         public int PopYear { get; set;}
-        public int DemographicId { get; set; }
         public Demographic Race { get; set; }
-        public int PopulationByRace { get; set; }
+
         public int TotalPopulation { get; set; }
+
+
         public ZipCode Zip { get; set; }
         public int Id { get; set; }
     }

@@ -20,18 +20,20 @@ namespace GentrificationCalc.Migrations
 
         protected override void Seed(GentrificationCalc.DAL.CalcContext context)
         {
-
-                context.Demographics.AddOrUpdate(
-                    demographic => demographic.Race,
-                    new Demographic { Race = "TotalPopulation" },
-                    new Demographic { Race = "White" },
-                    new Demographic { Race = "BlackorAfricanAmerican" },
-                    new Demographic { Race = "AmericanIndianandAlaskaNative" },
-                    new Demographic { Race = "Asian" },
-                    new Demographic { Race = "NativeHawaiianandOtherPacificIslander" },
-                    new Demographic { Race = "Other" },
-                    new Demographic { Race = "TwoorMoreRaces" }
-                );
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string resourceName = ""
+            
+            context.Demographics.AddOrUpdate(
+                demographic => demographic.Race,
+                new Demographic { Race = "TotalPopulation" },
+                new Demographic { Race = "White" },
+                new Demographic { Race = "BlackorAfricanAmerican" },
+                new Demographic { Race = "AmericanIndianandAlaskaNative" },
+                new Demographic { Race = "Asian" },
+                new Demographic { Race = "NativeHawaiianandOtherPacificIslander" },
+                new Demographic { Race = "Other" },
+                new Demographic { Race = "TwoorMoreRaces" }
+            );
 
             context.ZipCodes.AddOrUpdate(
                 zipcode => zipcode.ZipCodeDigit,

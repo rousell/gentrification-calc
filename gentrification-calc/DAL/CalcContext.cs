@@ -1,11 +1,11 @@
-﻿using gentrification_calc.Models;
+﻿using GentrificationCalc.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace gentrification_calc.DAL
+namespace GentrificationCalc.DAL
 {
     public class CalcContext : ApplicationDbContext
     {

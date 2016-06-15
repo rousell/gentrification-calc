@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace gentrification_calc.Areas.HelpPage
+namespace GentrificationCalc.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

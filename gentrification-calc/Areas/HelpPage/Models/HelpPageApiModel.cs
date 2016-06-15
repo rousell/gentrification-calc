@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using gentrification_calc.Areas.HelpPage.ModelDescriptions;
+using GentrificationCalc.Areas.HelpPage.ModelDescriptions;
 
-namespace gentrification_calc.Areas.HelpPage.Models
+namespace GentrificationCalc.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

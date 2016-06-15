@@ -1,39 +1,52 @@
-namespace gentrification_calc.Migrations
+namespace GentrificationCalc.Migrations
 {
     using CsvHelper;
     using Models;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Text;
-    internal sealed class Configuration : DbMigrationsConfiguration<gentrification_calc.DAL.CalcContext>
+    using System.Web.Hosting;
+   
+    internal sealed class Configuration : DbMigrationsConfiguration<GentrificationCalc.DAL.CalcContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(gentrification_calc.DAL.CalcContext context)
+        protected override void Seed(GentrificationCalc.DAL.CalcContext context)
         {
-
-                Assembly assembly = Assembly.GetExecutingAssembly();
-                string resourceName = "gentrification-calc.DAL.SeedData.ACS_2011_Cleaned.csv";
-                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                {
-                    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            context.Database.Log = Console.Write;
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            ///string resourceName = "GentrificationCalc.App_Data.ACS2011Cleaned.csv";
+            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\App_Data\\ACS2011Cleaned.csv";
+            //string resourcePath = "~/App_Data/ACS2011Cleaned.csv";
+            var x = assembly.GetManifestResourceNames();
+                //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                //{
+                    using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
                     {
                         CsvReader csvReader = new CsvReader(reader);
                         csvReader.Configuration.WillThrowOnMissingField = false;
                         while (csvReader.Read()) {
-                            IEnumerable<PopulationYear> myData = csvReader.GetRecords<PopulationYear>();
-                        ///context.PopulationYears.AddOrUpdate(p => )
+                            var myData = csvReader.GetRecords<PopulationYear>();
+                            
+                            foreach( var item in myData)
+                    {
+                        context.PopulationYears.AddOrUpdate(pop => pop.Id,
+                            new PopulationYear { TotalPopulation = item.TotalPopulation }
+                            ); 
+                    }
+
+
+                    context.PopulationYears.AddOrUpdate(p => p.Id, myData.ToArray());           
                         }
                     }
-                }
+                //}
 
 
                 context.Demographics.AddOrUpdate(

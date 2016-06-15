@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace gentrification_calc
+namespace GentrificationCalc
 {
     public class FilterConfig
     {

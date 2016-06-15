@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using gentrification_calc.Areas.HelpPage.ModelDescriptions;
+using GentrificationCalc.Areas.HelpPage.ModelDescriptions;
 
-namespace gentrification_calc.Areas.HelpPage
+namespace GentrificationCalc.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

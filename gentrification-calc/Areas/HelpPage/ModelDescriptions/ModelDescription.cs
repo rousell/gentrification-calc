@@ -1,6 +1,6 @@
 using System;
 
-namespace gentrification_calc.Areas.HelpPage.ModelDescriptions
+namespace GentrificationCalc.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

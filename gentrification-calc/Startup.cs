@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(gentrification_calc.Startup))]
+[assembly: OwinStartup(typeof(GentrificationCalc.Startup))]
 
-namespace gentrification_calc
+namespace GentrificationCalc
 {
     public partial class Startup
     {

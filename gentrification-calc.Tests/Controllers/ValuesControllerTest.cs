@@ -5,10 +5,10 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using gentrification_calc;
-using gentrification_calc.Controllers;
+using GentrificationCalc;
+using GentrificationCalc.Controllers;
 
-namespace gentrification_calc.Tests.Controllers
+namespace GentrificationCalc.Tests.Controllers
 {
     [TestClass]
     public class ValuesControllerTest

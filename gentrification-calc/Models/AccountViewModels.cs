@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace gentrification_calc.Models
+namespace GentrificationCalc.Models
 {
     // Models returned by AccountController actions.
 

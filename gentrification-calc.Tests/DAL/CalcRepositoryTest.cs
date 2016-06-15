@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using gentrification_calc.DAL;
+using GentrificationCalc.DAL;
 using Moq;
-using gentrification_calc.Models;
+using GentrificationCalc.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace gentrification_calc.Tests.DAL
+namespace GentrificationCalc.Tests.DAL
 {
     [TestClass]
     public class CalcRepositoryTest

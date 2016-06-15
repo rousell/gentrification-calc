@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace gentrification_calc.Areas.HelpPage.ModelDescriptions
+namespace GentrificationCalc.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

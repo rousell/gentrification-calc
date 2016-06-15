@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace gentrification_calc
+namespace GentrificationCalc
 {
     public class RouteConfig
     {

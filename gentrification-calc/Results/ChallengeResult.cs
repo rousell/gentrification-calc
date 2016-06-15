@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace gentrification_calc.Results
+namespace GentrificationCalc.Results
 {
     public class ChallengeResult : IHttpActionResult
     {

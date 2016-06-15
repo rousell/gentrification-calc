@@ -8,10 +8,10 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using gentrification_calc.Providers;
-using gentrification_calc.Models;
+using GentrificationCalc.Providers;
+using GentrificationCalc.Models;
 
-namespace gentrification_calc
+namespace GentrificationCalc
 {
     public partial class Startup
     {

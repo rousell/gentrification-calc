@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gentrification-calc", "gentrification-calc\gentrification-calc.csproj", "{EC3DB176-0604-4C00-83C2-B12118BA9C37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GentrificationCalc", "gentrification-calc\GentrificationCalc.csproj", "{EC3DB176-0604-4C00-83C2-B12118BA9C37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gentrification-calc.Tests", "gentrification-calc.Tests\gentrification-calc.Tests.csproj", "{42B2BD37-EF64-4DCC-8AC5-D39AA6C0C119}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GentrificationCalc.Tests", "gentrification-calc.Tests\GentrificationCalc.Tests.csproj", "{42B2BD37-EF64-4DCC-8AC5-D39AA6C0C119}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

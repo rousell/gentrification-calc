@@ -13,11 +13,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using gentrification_calc.Models;
-using gentrification_calc.Providers;
-using gentrification_calc.Results;
+using GentrificationCalc.Models;
+using GentrificationCalc.Providers;
+using GentrificationCalc.Results;
 
-namespace gentrification_calc.Controllers
+namespace GentrificationCalc.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

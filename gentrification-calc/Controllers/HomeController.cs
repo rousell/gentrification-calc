@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace gentrification_calc.Controllers
+namespace GentrificationCalc.Controllers
 {
     public class HomeController : Controller
     {

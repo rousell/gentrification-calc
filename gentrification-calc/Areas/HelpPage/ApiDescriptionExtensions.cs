@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace gentrification_calc.Areas.HelpPage
+namespace GentrificationCalc.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

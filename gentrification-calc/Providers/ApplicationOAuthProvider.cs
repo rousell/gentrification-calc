@@ -9,9 +9,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using gentrification_calc.Models;
+using GentrificationCalc.Models;
 
-namespace gentrification_calc.Providers
+namespace GentrificationCalc.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

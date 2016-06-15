@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using gentrification_calc.Areas.HelpPage.ModelDescriptions;
-using gentrification_calc.Areas.HelpPage.Models;
+using GentrificationCalc.Areas.HelpPage.ModelDescriptions;
+using GentrificationCalc.Areas.HelpPage.Models;
 
-namespace gentrification_calc.Areas.HelpPage.Controllers
+namespace GentrificationCalc.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

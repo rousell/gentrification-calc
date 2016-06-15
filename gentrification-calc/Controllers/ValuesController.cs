@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace gentrification_calc.Controllers
+namespace GentrificationCalc.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController

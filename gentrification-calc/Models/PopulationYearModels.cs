@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace gentrification_calc.Models
+namespace GentrificationCalc.Models
 {
     public class PopulationYear
     {
@@ -11,6 +11,7 @@ namespace gentrification_calc.Models
         public int DemographicId { get; set; }
         public Demographic Race { get; set; }
         public int PopulationByRace { get; set; }
+        public int TotalPopulation { get; set; }
         public ZipCode Zip { get; set; }
         public int Id { get; set; }
     }

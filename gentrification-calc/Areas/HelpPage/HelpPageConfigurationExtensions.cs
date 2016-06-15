@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using gentrification_calc.Areas.HelpPage.ModelDescriptions;
-using gentrification_calc.Areas.HelpPage.Models;
+using GentrificationCalc.Areas.HelpPage.ModelDescriptions;
+using GentrificationCalc.Areas.HelpPage.Models;
 
-namespace gentrification_calc.Areas.HelpPage
+namespace GentrificationCalc.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

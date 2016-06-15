@@ -121,9 +121,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\gentrification-calc\gentrification-calc.csproj">
+    <ProjectReference Include="..\gentrification-calc\GentrificationCalc.csproj">
       <Project>{EC3DB176-0604-4C00-83C2-B12118BA9C37}</Project>
-      <Name>gentrification-calc</Name>
+      <Name>GentrificationCalc</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using gentrification_calc;
-using gentrification_calc.Controllers;
+using GentrificationCalc;
+using GentrificationCalc.Controllers;
 
-namespace gentrification_calc.Tests.Controllers
+namespace GentrificationCalc.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

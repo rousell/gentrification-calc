@@ -1,4 +1,4 @@
-namespace gentrification_calc.Migrations
+namespace GentrificationCalc.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

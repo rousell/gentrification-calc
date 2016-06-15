@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace gentrification_calc.Models
+namespace GentrificationCalc.Models
 {
     // Models used as parameters to AccountController actions.
 

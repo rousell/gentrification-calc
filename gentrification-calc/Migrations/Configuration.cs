@@ -20,45 +20,6 @@ namespace GentrificationCalc.Migrations
 
         protected override void Seed(GentrificationCalc.DAL.CalcContext context)
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS_2011_Cleaned.csv";
-            using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
-            {
-                CsvReader csvReader = new CsvReader(reader);
-                csvReader.Configuration.WillThrowOnMissingField = false;
-                while (csvReader.Read())
-                {
-                    var populations = csvReader.GetRecords<PopulationYear>.ToArray();
-                    var zipField = csvReader.GetField<int>("Zip");
-                    populations.Zip = context.ZipCodes.Local.Single(z => z.ZipCodeDigit == zipField);
-                    context.PopulationYears.AddOrUpdate(p => p.Zip, populations);
-                    
-                    //this.context.PopulationYears.Add(myData);
-
-                    //context.PopulationYears.AddOrUpdate(p => p.Id, myData);
-                    /*foreach(var item in myData)
-                    {
-
-                        context.PopulationYears.AddOrUpdate(pop => pop.Id,
-                            new PopulationYear { TotalPopulation = item.TotalPopulation }
-                        ); 
-                    }*/
-
-                    //context.PopulationYears.AddOrUpdate(p => p.Id, myData);
-                }
-            }
-            
-            context.Demographics.AddOrUpdate(
-                demographic => demographic.Race,
-                new Demographic { Race = "TotalPopulation" },
-                new Demographic { Race = "White" },
-                new Demographic { Race = "BlackorAfricanAmerican" },
-                new Demographic { Race = "AmericanIndianandAlaskaNative" },
-                new Demographic { Race = "Asian" },
-                new Demographic { Race = "NativeHawaiianandOtherPacificIslander" },
-                new Demographic { Race = "Other" },
-                new Demographic { Race = "TwoorMoreRaces" }
-            );
 
             context.ZipCodes.AddOrUpdate(
                 zipcode => zipcode.ZipCodeDigit,
@@ -101,6 +62,33 @@ namespace GentrificationCalc.Migrations
                 new ZipCode { ZipCodeDigit = 37243 },
                 new ZipCode { ZipCodeDigit = 37246 }
             );
+
+            if (System.Diagnostics.Debugger.IsAttached == false)
+                System.Diagnostics.Debugger.Launch();
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2011_Cleaned.csv";
+            using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
+            {
+                CsvReader csvReader = new CsvReader(reader);
+                csvReader.Configuration.WillThrowOnMissingField = false;
+                var populations = csvReader.GetRecords<PopulationYear>().ToArray();
+                context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
+            }
+
+            context.Demographics.AddOrUpdate(
+                demographic => demographic.Race,
+                new Demographic { Race = "TotalPopulation" },
+                new Demographic { Race = "White" },
+                new Demographic { Race = "BlackorAfricanAmerican" },
+                new Demographic { Race = "AmericanIndianandAlaskaNative" },
+                new Demographic { Race = "Asian" },
+                new Demographic { Race = "NativeHawaiianandOtherPacificIslander" },
+                new Demographic { Race = "Other" },
+                new Demographic { Race = "TwoorMoreRaces" }
+            );
+
+            
         }
     }
 }

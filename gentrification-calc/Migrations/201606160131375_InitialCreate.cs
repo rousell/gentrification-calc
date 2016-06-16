@@ -42,14 +42,13 @@ namespace GentrificationCalc.Migrations
                         NativeHawaiianandOtherPacificIslanderPopulation = c.Int(nullable: false),
                         OtherPopulation = c.Int(nullable: false),
                         TwoorMoreRacesPopulation = c.Int(nullable: false),
+                        ZipCodeDigit = c.Int(nullable: false),
+                        YearZipId = c.Int(nullable: false),
                         Race_DemographicId = c.Int(),
-                        Zip_ZipCodeId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Demographics", t => t.Race_DemographicId)
-                .ForeignKey("dbo.ZipCodes", t => t.Zip_ZipCodeId)
-                .Index(t => t.Race_DemographicId)
-                .Index(t => t.Zip_ZipCodeId);
+                .Index(t => t.Race_DemographicId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -127,7 +126,6 @@ namespace GentrificationCalc.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.PopulationYears", "Zip_ZipCodeId", "dbo.ZipCodes");
             DropForeignKey("dbo.PopulationYears", "Race_DemographicId", "dbo.Demographics");
             DropForeignKey("dbo.Demographics", "Zip_ZipCodeId", "dbo.ZipCodes");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -136,7 +134,6 @@ namespace GentrificationCalc.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.PopulationYears", new[] { "Zip_ZipCodeId" });
             DropIndex("dbo.PopulationYears", new[] { "Race_DemographicId" });
             DropIndex("dbo.Demographics", new[] { "Zip_ZipCodeId" });
             DropTable("dbo.AspNetUserLogins");

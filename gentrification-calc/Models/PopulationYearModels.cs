@@ -19,7 +19,8 @@ namespace GentrificationCalc.Models
         public int OtherPopulation { get; set; }
         public int TwoorMoreRacesPopulation { get; set; }
 
-        public ZipCode Zip { get; set; }
+        public int ZipCodeDigit { get; set; }
         public int Id { get; set; }
+        public int YearZipId { get; set; }
     }
 }

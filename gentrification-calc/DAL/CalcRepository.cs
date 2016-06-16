@@ -27,7 +27,7 @@ namespace GentrificationCalc.DAL
         public void CsvImport()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS_2011_Cleaned.csv";
+            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2011_Cleaned.csv";
             using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
             {
                 CsvReader csvReader = new CsvReader(reader);

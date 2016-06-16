@@ -1,6 +1,7 @@
 namespace GentrificationCalc.Migrations
 {
     using CsvHelper;
+    using gentrification_calc.DAL;
     using Models;
     using System;
     using System.Data.Entity;
@@ -10,7 +11,7 @@ namespace GentrificationCalc.Migrations
     using System.Reflection;
     using System.Text;
     using System.Web.Hosting;
-   
+
     internal sealed class Configuration : DbMigrationsConfiguration<GentrificationCalc.DAL.CalcContext>
     {
         public Configuration()
@@ -20,6 +21,8 @@ namespace GentrificationCalc.Migrations
 
         protected override void Seed(GentrificationCalc.DAL.CalcContext context)
         {
+            
+
 
             context.ZipCodes.AddOrUpdate(
                 zipcode => zipcode.ZipCodeDigit,
@@ -63,18 +66,15 @@ namespace GentrificationCalc.Migrations
                 new ZipCode { ZipCodeDigit = 37246 }
             );
 
-            if (System.Diagnostics.Debugger.IsAttached == false)
-                System.Diagnostics.Debugger.Launch();
+            /*if (System.Diagnostics.Debugger.IsAttached == false)
+                System.Diagnostics.Debugger.Launch();*/
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2011_Cleaned.csv";
-            using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
-            {
-                CsvReader csvReader = new CsvReader(reader);
-                csvReader.Configuration.WillThrowOnMissingField = false;
-                var populations = csvReader.GetRecords<PopulationYear>().ToArray();
-                context.PopulationYears.AddOrUpdate(p => p.YearZipId, populations);
-            }
+            var seedservice = new CsvSeedService();
+            //seedservice.CsvImport();
+
+            var populations = seedservice.CsvImport().ToArray();
+            context.PopulationYears.AddOrUpdate(p => p.YearZipId, populations);
+            
 
             context.Demographics.AddOrUpdate(
                 demographic => demographic.Race,

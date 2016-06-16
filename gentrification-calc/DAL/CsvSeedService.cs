@@ -1,30 +1,27 @@
 ﻿using CsvHelper;
 using GentrificationCalc.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Web;
+using GentrificationCalc.DAL;
 
-namespace GentrificationCalc.DAL
+namespace gentrification_calc.DAL
 {
-    public class CalcRepository
+    public class CsvSeedService
     {
         public CalcContext context { get; set; }
 
-        public CalcRepository()
+        public CsvSeedService()
         {
             context = new CalcContext();
         }
 
-        public CalcRepository(CalcContext _context)
-        {
-            context = _context;
-        }
-
-        public void CsvImport()
+        public IEnumerable<PopulationYear> CsvImport()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             IEnumerable<PopulationYear> populations;
@@ -38,8 +35,10 @@ namespace GentrificationCalc.DAL
                 context.PopulationYears.AddRange(populations);
 
                 context.SaveChanges();
-            }
 
+                return populations;
+            }
+            
         }
     }
 }

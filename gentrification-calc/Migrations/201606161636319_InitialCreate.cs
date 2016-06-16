@@ -13,20 +13,8 @@ namespace GentrificationCalc.Migrations
                     {
                         DemographicId = c.Int(nullable: false, identity: true),
                         Race = c.String(),
-                        Zip_ZipCodeId = c.Int(),
                     })
-                .PrimaryKey(t => t.DemographicId)
-                .ForeignKey("dbo.ZipCodes", t => t.Zip_ZipCodeId)
-                .Index(t => t.Zip_ZipCodeId);
-            
-            CreateTable(
-                "dbo.ZipCodes",
-                c => new
-                    {
-                        ZipCodeId = c.Int(nullable: false, identity: true),
-                        ZipCodeDigit = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ZipCodeId);
+                .PrimaryKey(t => t.DemographicId);
             
             CreateTable(
                 "dbo.PopulationYears",
@@ -44,11 +32,8 @@ namespace GentrificationCalc.Migrations
                         TwoorMoreRacesPopulation = c.Int(nullable: false),
                         ZipCodeDigit = c.Int(nullable: false),
                         YearZipId = c.Int(nullable: false),
-                        Race_DemographicId = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Demographics", t => t.Race_DemographicId)
-                .Index(t => t.Race_DemographicId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -118,6 +103,15 @@ namespace GentrificationCalc.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.ZipCodes",
+                c => new
+                    {
+                        ZipCodeId = c.Int(nullable: false, identity: true),
+                        ZipCodeDigit = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ZipCodeId);
+            
         }
         
         public override void Down()
@@ -126,23 +120,19 @@ namespace GentrificationCalc.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.PopulationYears", "Race_DemographicId", "dbo.Demographics");
-            DropForeignKey("dbo.Demographics", "Zip_ZipCodeId", "dbo.ZipCodes");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.PopulationYears", new[] { "Race_DemographicId" });
-            DropIndex("dbo.Demographics", new[] { "Zip_ZipCodeId" });
+            DropTable("dbo.ZipCodes");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.PopulationYears");
-            DropTable("dbo.ZipCodes");
             DropTable("dbo.Demographics");
         }
     }

@@ -250,8 +250,13 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\CalcContext.cs" />
     <Compile Include="DAL\CalcRepository.cs" />
+    <Compile Include="DAL\CsvSeedService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606161636319_InitialCreate.cs" />
+    <Compile Include="Migrations\201606161636319_InitialCreate.Designer.cs">
+      <DependentUpon>201606161636319_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -264,6 +269,9 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <EmbeddedResource Include="Migrations\201606161636319_InitialCreate.resx">
+      <DependentUpon>201606161636319_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

@@ -63,17 +63,16 @@ namespace GentrificationCalc.Migrations
                 new ZipCode { ZipCodeDigit = 37246 }
             );
 
-            if (System.Diagnostics.Debugger.IsAttached == false)
-                System.Diagnostics.Debugger.Launch();
+            /*if (System.Diagnostics.Debugger.IsAttached == false)
+                System.Diagnostics.Debugger.Launch();*/
 
-            Assembly assembly = Assembly.GetExecutingAssembly();
             string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2011_Cleaned.csv";
             using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
             {
                 CsvReader csvReader = new CsvReader(reader);
                 csvReader.Configuration.WillThrowOnMissingField = false;
                 var populations = csvReader.GetRecords<PopulationYear>().ToArray();
-                context.PopulationYears.AddOrUpdate(p => p.YearZipId, populations);
+                context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
             }
 
             context.Demographics.AddOrUpdate(

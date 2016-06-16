@@ -73,7 +73,7 @@ namespace GentrificationCalc.Migrations
                 CsvReader csvReader = new CsvReader(reader);
                 csvReader.Configuration.WillThrowOnMissingField = false;
                 var populations = csvReader.GetRecords<PopulationYear>().ToArray();
-                context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
+                context.PopulationYears.AddOrUpdate(p => p.YearZipId, populations);
             }
 
             context.Demographics.AddOrUpdate(

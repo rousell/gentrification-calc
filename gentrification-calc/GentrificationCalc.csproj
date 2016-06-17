@@ -245,17 +245,17 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <EmbeddedResource Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <EmbeddedResource Include="Controllers\Api\AccountController.cs" />
+    <Compile Include="Controllers\Web\HomeController.cs" />
+    <Compile Include="Controllers\Api\ValuesController.cs" />
     <Compile Include="DAL\CalcContext.cs" />
     <Compile Include="DAL\CalcRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606161807263_InitialDatabase.cs" />
-    <Compile Include="Migrations\201606161807263_InitialDatabase.Designer.cs">
-      <DependentUpon>201606161807263_InitialDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201606161816369_InitialDatabase.cs" />
+    <Compile Include="Migrations\201606161816369_InitialDatabase.Designer.cs">
+      <DependentUpon>201606161816369_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -268,8 +268,8 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
-    <EmbeddedResource Include="Migrations\201606161807263_InitialDatabase.resx">
-      <DependentUpon>201606161807263_InitialDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606161816369_InitialDatabase.resx">
+      <DependentUpon>201606161816369_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

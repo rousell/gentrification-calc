@@ -63,18 +63,6 @@ namespace GentrificationCalc.Migrations
                 new ZipCode { ZipCodeDigit = 37246 }
             );
 
-            /*if (System.Diagnostics.Debugger.IsAttached == false)
-                System.Diagnostics.Debugger.Launch();*/
-
-            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2011_Cleaned.csv";
-            using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
-            {
-                CsvReader csvReader = new CsvReader(reader);
-                csvReader.Configuration.WillThrowOnMissingField = false;
-                var populations = csvReader.GetRecords<PopulationYear>().ToArray();
-                context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
-            }
-
             context.Demographics.AddOrUpdate(
                 demographic => demographic.Race,
                 new Demographic { Race = "TotalPopulation" },
@@ -87,7 +75,45 @@ namespace GentrificationCalc.Migrations
                 new Demographic { Race = "TwoorMoreRaces" }
             );
 
-            
+            /*if (System.Diagnostics.Debugger.IsAttached == false)
+                System.Diagnostics.Debugger.Launch();*/
+
+            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2011_Cleaned.csv";
+            using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
+            {
+                CsvReader csvReader = new CsvReader(reader);
+                csvReader.Configuration.WillThrowOnMissingField = false;
+                var populations = csvReader.GetRecords<PopulationYear>().ToArray();
+                context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
+            }
+
+            string resourcePath2 = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2012_Cleaned.csv";
+            using (StreamReader reader = new StreamReader(resourcePath2, Encoding.UTF8))
+            {
+                CsvReader csvReader = new CsvReader(reader);
+                csvReader.Configuration.WillThrowOnMissingField = false;
+                var populations = csvReader.GetRecords<PopulationYear>().ToArray();
+                context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
+            }
+
+            string resourcePath3 = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2013_Cleaned.csv";
+            using (StreamReader reader = new StreamReader(resourcePath3, Encoding.UTF8))
+            {
+                CsvReader csvReader = new CsvReader(reader);
+                csvReader.Configuration.WillThrowOnMissingField = false;
+                var populations = csvReader.GetRecords<PopulationYear>().ToArray();
+                context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
+            }
+
+            string resourcePath4 = "C:\\Users\\NSSStudent\\Documents\\GitHub\\gentrification-calc\\gentrification-calc\\DAL\\SeedData\\ACS2014_Cleaned.csv";
+            using (StreamReader reader = new StreamReader(resourcePath4, Encoding.UTF8))
+            {
+                CsvReader csvReader = new CsvReader(reader);
+                csvReader.Configuration.WillThrowOnMissingField = false;
+                var populations = csvReader.GetRecords<PopulationYear>().ToArray();
+                context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
+            }
+
         }
     }
 }

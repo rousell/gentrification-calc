@@ -13,7 +13,7 @@ namespace GentrificationCalc.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201606161807263_InitialDatabase"; }
+            get { return "201606161816369_InitialDatabase"; }
         }
         
         string IMigrationMetadata.Source

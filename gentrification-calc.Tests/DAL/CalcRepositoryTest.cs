@@ -39,23 +39,22 @@ namespace GentrificationCalc.Tests.DAL
             mock_context.Setup(context => context.Demographics).Returns(mock_demographic_table.Object);
         }
 
-
-
+        private CalcRepository _repo = new CalcRepository();
         [TestMethod]
         public void RepoEnsureICanCreateAnInstance()
         {
-            CalcRepository repo = new CalcRepository();
-            Assert.IsNotNull(repo);
+            //CalcRepository repo = new CalcRepository();
+            Assert.IsNotNull(_repo);
         }
 
         [TestMethod]
         public void RepoEnsureIHaveDemographicSeedData()
         {
             //Arrange
-            ConnectMocksToDatastore();
+            //CalcRepository repo = new CalcRepository();
 
             //Act
-            int demographic_data_count = Repo.GetDemographicDataCount();
+            int demographic_data_count = _repo.GetDemographicDataCount();
 
             //Assert
             Assert.AreNotEqual(0, demographic_data_count);

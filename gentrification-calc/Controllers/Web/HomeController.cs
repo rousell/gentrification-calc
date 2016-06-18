@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GentrificationCalc.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace GentrificationCalc.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
+            var repo = new CalcRepository();
+            int myCount = repo.GetDemographicDataCount();
             return View();
         }
     }

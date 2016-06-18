@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>gentrification_calc</RootNamespace>
-    <AssemblyName>gentrification-calc</AssemblyName>
+    <RootNamespace>GentrificationCalc</RootNamespace>
+    <AssemblyName>GentrificationCalc</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -281,6 +281,9 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -309,6 +312,7 @@
     <EmbeddedResource Include="DAL\SeedData\ACS2012_Cleaned.csv" />
     <EmbeddedResource Include="DAL\SeedData\ACS2013_Cleaned.csv" />
     <EmbeddedResource Include="DAL\SeedData\ACS2014_Cleaned.csv" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

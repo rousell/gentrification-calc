@@ -12,8 +12,8 @@ namespace GentrificationCalc.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-            var repo = new CalcRepository();
-            int myCount = repo.GetDemographicDataCount();
+            //var repo = new CalcRepository();
+            //int myCount = repo.GetDemographicDataCount();
             return View();
         }
     }

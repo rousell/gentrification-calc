@@ -47,17 +47,18 @@ namespace GentrificationCalc.Tests.DAL
             Assert.IsNotNull(_repo);
         }
 
-        [TestMethod]
+        //IntegrationTest Attempt
+        /*[TestMethod]
         public void RepoEnsureIHaveDemographicSeedData()
         {
             //Arrange
             //CalcRepository repo = new CalcRepository();
-
             //Act
             int demographic_data_count = _repo.GetDemographicDataCount();
-
             //Assert
             Assert.AreNotEqual(0, demographic_data_count);
-        }
+        }*/
+
+
     }
 }

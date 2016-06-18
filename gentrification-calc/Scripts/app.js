@@ -1,5 +1,7 @@
 ﻿(function(){
 
-var app = angular.module("GentrificationCalcApp", []);
+    'use strict';
+
+    var app = angular.module("GentrificationCalcApp", []);
 
 })();

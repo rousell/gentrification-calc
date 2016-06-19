@@ -30,12 +30,12 @@ angular.module('app').controller('rootController', [
             '$scope', 'leaflet',
     function ($scope, leaflet) {
         leaflet.map.then(function (map) {
-            var tileLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 maxZoom: 18
             }).addTo(map);
-            map.setView([0, 0], 1);
-            L.marker([0, 0]).addTo(map);
+            map.setView([36.1666, -86.7833], 12);
+            L.marker([36.1666, -86.7833]).addTo(map);
         });
     }
 ]);

@@ -36,26 +36,31 @@ angular.module('app').controller('rootController', [
                 id: 'mapbox.streets',
                 accessToken: 'pk.eyJ1IjoibHJvdXNlIiwiYSI6ImNpaHBnYmkxaDA0NGJ0c20yMG5sMmZlenIifQ.NVpXXlzfBCtK00m36zp68Q'
             }).addTo(map);
+
             map.setView([36.1666, -86.7833], 12);
+
             L.marker([36.1666, -86.7833]).addTo(map);
+
             var redcircle = L.circle([36.1666, -86.783], 500,{
                 color: 'red',
                 fillColor: '#f03',
                 fillOpacity: 0.5
             }).addTo(map);
-            circle.bindPopup("This will have information.")    
+
+            redcircle.bindPopup("This will have information.")
+
+            var popup = L.popup();
+
+            function onMapClick(e) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(map);
+            }
+
+            map.on('click', onMapClick);
         });
 
-        var popup = L.popup();
-
-        function onMapClick(e){
-            popup
-                .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
-                .openOn(map);
-        }
-
-        map.on('click', onMapClick);
 
     }
 ]);

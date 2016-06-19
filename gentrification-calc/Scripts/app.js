@@ -38,7 +38,7 @@ angular.module('app').controller('rootController', [
             }).addTo(map);
             map.setView([36.1666, -86.7833], 12);
             L.marker([36.1666, -86.7833]).addTo(map);
-            L.circle([36.1666, -86.7833],{
+            L.circle([36.1666, -86.783], 500,{
                 color: 'red',
                 fillColor: '#f03',
                 fillOpacity: 0.5

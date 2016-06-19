@@ -38,8 +38,8 @@ angular.module('app').controller('rootController', [
             L.marker([36.1666, -86.7833]).addTo(map);
             L.polygon([
                 [36.18, -86,78],
-                [36.19, -86,78],
-                [36.18, -86,8]
+                [36.19, -86,77],
+                [36.12, -86,8]
             ]).addTo(map);    
         });
     }

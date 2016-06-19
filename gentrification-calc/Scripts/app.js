@@ -1,14 +1,8 @@
-﻿(function(){
+﻿angular.module('app', []);
 
-    'use strict';
-
-    angular
-        .module("GentrificationCalcApp", [])
-        .factory('MapService', MapService)
-        .directive('leaflet', leaflet)
-        .controller('MapCtrl', MapCtrl);
-
-    function MapService ($q) {
+angular.module('app').factory('leaflet', [
+            '$q',
+    function ($q) {
         var deferred = $q.defer();
         return {
             map: deferred.promise,
@@ -17,20 +11,24 @@
             }
         }
     }
-    
-    function leaflet (MapService) {
+]);
+
+angular.module('app').directive('leaflet', [
+            'leaflet',
+    function (leaflet) {
         return {
             replace: true,
             template: '<div></div>',
             link: function (scope, element, attributes) {
-                MapService.resolve(element[0]);
+                leaflet.resolve(element[0]);
             }
-        };
+        }
     }
+]);
 
-    function MapCtrl($scope, leaflet) {
-        //var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
+angular.module('app').controller('rootController', [
+            '$scope', 'leaflet',
+    function ($scope, leaflet) {
         leaflet.map.then(function (map) {
             var tileLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -40,19 +38,4 @@
             L.marker([0, 0]).addTo(map);
         });
     }
-
-    /*angular.module('app').config([
-  '$stateProvider',
-  '$urlRouterProvider',
-  function ($stateProvider, $urlRouterProvider) {
-      $urlRouterProvider.otherwise('/');
-      $stateProvider.state('root', {
-          'url': '/',
-          'controller': 'rootController',
-          'template': '<leaflet></leaflet>'
-      });
-  }
-    ]);*/
-
-
-})();
+]);

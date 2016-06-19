@@ -38,11 +38,24 @@ angular.module('app').controller('rootController', [
             }).addTo(map);
             map.setView([36.1666, -86.7833], 12);
             L.marker([36.1666, -86.7833]).addTo(map);
-            L.circle([36.1666, -86.783], 500,{
+            var redcircle = L.circle([36.1666, -86.783], 500,{
                 color: 'red',
                 fillColor: '#f03',
                 fillOpacity: 0.5
-            }).addTo(map);    
+            }).addTo(map);
+            circle.bindPopup("This will have information.")    
         });
+
+        var popup = L.popup();
+
+        function onMapClick(e){
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(map);
+        }
+
+        map.on('click', onMapClick);
+
     }
 ]);

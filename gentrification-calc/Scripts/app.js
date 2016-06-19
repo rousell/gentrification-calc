@@ -36,6 +36,11 @@ angular.module('app').controller('rootController', [
             }).addTo(map);
             map.setView([36.1666, -86.7833], 12);
             L.marker([36.1666, -86.7833]).addTo(map);
+            L.polygon([
+                [36.18, -86,78],
+                [36.19, -86,78],
+                [36.18, -86,8]
+            ]).addTo(map);    
         });
     }
 ]);

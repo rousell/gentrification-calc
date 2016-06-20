@@ -85,20 +85,41 @@ angular.module('app').controller('rootController', [
 
             self.getZipCodes();
 
+            
 
+            //Topo Layer Logic
             var topoLayer = new L.TopoJSON();
 
             $.getJSON('api/JsonFile')
                 .done(addTopoData);
 
-            function addTopoData(topoData){
-                topoLayer.addData(topoData);
+            function addTopoData(topoData, style){
+                topoLayer.addData(topoData, { style: style });
                 topoLayer.addTo(map);
+                topoLayer.eachLayer(handleLayer);
             }
 
+            //Styling of Topo Layer
+            //topoLayer.eachLayer(handleLayer);
 
+            function handleLayer(layer) {
+                //var randomValue = Math.random(),
+                //fillColor = colorScale(randomValue).hex();
 
-            //L.geoJson(zipData).addTo(map);
+                layer.setStyle({
+                    //fillColor: fillColor,
+                    //fillOpacity: 1,
+                    color: 'navy',
+                    weight: 1,
+                    opacity: 1,
+                    dashArray: '3'
+                });
+
+                /*layer.on({
+                    mouseover: enterLayer,
+                    mouseout: leaveLayer
+                });*/
+            }
 
         });
 

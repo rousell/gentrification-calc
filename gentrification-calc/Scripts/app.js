@@ -48,7 +48,9 @@ angular.module('app').controller('rootController', [
             }).addTo(map);
 
             redcircle.bindPopup("This will have information.")
-            
+           
+            console.log("~");
+
             var popup = L.popup();
             function onMapClick(e) {
                 popup
@@ -75,12 +77,15 @@ angular.module('app').controller('rootController', [
 
             var topoLayer = new L.TopoJSON();
 
-            $.getJSON('data/zipData.json')
+            $.getJSON('~/Scripts/data/zipData.json')
                 .done(addTopoData);
 
             function addTopoData(topoData){
                 topoLayer.addData(topoData);
                 topoLayer.addTo(map);
+            }
+
+
 
             //L.geoJson(zipData).addTo(map);
 

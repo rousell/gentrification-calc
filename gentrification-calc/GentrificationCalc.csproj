@@ -324,6 +324,7 @@
     <EmbeddedResource Include="DAL\SeedData\ACS2014_Cleaned.csv" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="App_Data\zipData.json" />
+    <Content Include="App_Data\zipData.topo.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

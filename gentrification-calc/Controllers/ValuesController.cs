@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GentrificationCalc.DAL;
+using GentrificationCalc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,10 +12,13 @@ namespace GentrificationCalc.Controllers
     [Authorize]
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        CalcRepository Repo = new CalcRepository();
+
+        // GET api/ZipCode
+        public IEnumerable<ZipCode> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<ZipCode> zipcode = Repo.GetZip();
+            return zipcode;
         }
 
         // GET api/values/5

@@ -27,8 +27,8 @@ angular.module('app').directive('leaflet', [
 ]);
 
 angular.module('app').controller('rootController', [
-            '$scope', 'leaflet',
-    function ($scope, leaflet) {
+            '$scope', 'leaflet', '$http',
+    function ($scope, leaflet, $http) {
         leaflet.map.then(function (map) {
             L.tileLayer('http://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -48,8 +48,6 @@ angular.module('app').controller('rootController', [
             }).addTo(map);
 
             redcircle.bindPopup("This will have information.")
-           
-            console.log("~");
 
             var popup = L.popup();
             function onMapClick(e) {
@@ -75,9 +73,22 @@ angular.module('app').controller('rootController', [
             });
             // Copyright (c) 2013 Ryan Clark
 
+            //Checking to See if API Returns ZipCode Model Information
+            var self = this;
+
+            self.getZipCodes = function () {
+                $http.get("api/ZipCode")
+                    .then(function (response) {
+                        console.log(response);
+                    })
+            }
+
+            self.getZipCodes();
+
+
             var topoLayer = new L.TopoJSON();
 
-            $.getJSON('~/Scripts/data/zipData.json')
+            $.getJSON('api/JsonFile')
                 .done(addTopoData);
 
             function addTopoData(topoData){

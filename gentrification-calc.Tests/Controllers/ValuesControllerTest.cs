@@ -7,12 +7,14 @@ using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GentrificationCalc;
 using GentrificationCalc.Controllers;
+using GentrificationCalc.Models;
 
 namespace GentrificationCalc.Tests.Controllers
 {
     [TestClass]
     public class ValuesControllerTest
     {
+        //Changed to reflect getting Zip Code Information
         [TestMethod]
         public void Get()
         {
@@ -20,13 +22,10 @@ namespace GentrificationCalc.Tests.Controllers
             ValuesController controller = new ValuesController();
 
             // Act
-            IEnumerable<string> result = controller.Get();
+            IEnumerable<ZipCode> result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
         }
 
         [TestMethod]

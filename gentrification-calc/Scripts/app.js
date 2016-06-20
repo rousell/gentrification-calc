@@ -107,6 +107,7 @@ angular.module('app').controller('rootController', [
             function handleLayer(layer) {
                 //var randomValue = Math.random(),
                 //fillColor = colorScale(randomValue).hex();
+                console.log(layer);
 
                 layer.setStyle({
                     //fillColor: fillColor,

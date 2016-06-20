@@ -24,6 +24,11 @@ namespace GentrificationCalc.DAL
             context = _context;
         }
 
+        internal List<ZipCode> GetZip()
+        {
+            return context.ZipCodes.ToList<ZipCode>();
+        }
+
         public int GetDemographicDataCount()
         {
             return context.Demographics.Count();

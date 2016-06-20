@@ -6,6 +6,9 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/leaflet")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" ng-app="app" ng-cloak>
         @RenderBody()
         <hr />
         <footer>
@@ -34,6 +37,7 @@
         </footer>
     </div>
 
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

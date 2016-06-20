@@ -8,7 +8,7 @@ namespace GentrificationCalc.Controllers.Api
     {
         public object Get()
         {
-            string allText = File.ReadAllText(@"C:\Users\NSSStudent\Documents\GitHub\gentrification-calc\gentrification-calc\App_Data\zipData.json");
+            string allText = File.ReadAllText(@"C:\Users\NSSStudent\Documents\GitHub\gentrification-calc\gentrification-calc\App_Data\zipData.topo.json");
 
             object jsonObject = JsonConvert.DeserializeObject(allText);
             return jsonObject;

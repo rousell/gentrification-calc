@@ -107,7 +107,7 @@ angular.module('app').controller('rootController', [
             function handleLayer(layer) {
                 //var randomValue = Math.random(),
                 //fillColor = colorScale(randomValue).hex();
-                console.log(layer);
+                //console.log(layer);
 
                 layer.setStyle({
                     //fillColor: fillColor,
@@ -129,7 +129,7 @@ angular.module('app').controller('rootController', [
             //Event Handlers for Mouseover and Mouseout on Layers
             function enterLayer() {
                 //$testName.text(testName).show();
-                console.log("entered new layer");
+                console.log("This is ", this.feature.properties.ZCTA5CE10);
 
                 this.bringToFront();
                 this.setStyle({

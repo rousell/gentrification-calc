@@ -29,6 +29,8 @@ angular.module('app').directive('leaflet', [
 angular.module('app').controller('rootController', [
             '$scope', 'leaflet', '$http',
     function ($scope, leaflet, $http) {
+
+        //Promise to Load in Leaflet Map
         leaflet.map.then(function (map) {
             L.tileLayer('http://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -37,10 +39,15 @@ angular.module('app').controller('rootController', [
                 accessToken: 'pk.eyJ1IjoibHJvdXNlIiwiYSI6ImNpaHBnYmkxaDA0NGJ0c20yMG5sMmZlenIifQ.NVpXXlzfBCtK00m36zp68Q'
             }).addTo(map);
 
+            //Variables
+            var self = this;
+
             map.setView([36.1666, -86.7833], 12);
 
+            //Testing Adding Marker
             L.marker([36.1666, -86.7833]).addTo(map);
 
+            //Testing Adding Circle
             var redcircle = L.circle([36.1666, -86.783], 500,{
                 color: 'red',
                 fillColor: '#f03',
@@ -49,6 +56,7 @@ angular.module('app').controller('rootController', [
 
             redcircle.bindPopup("This will have information.")
 
+            //Event Handler for popup on map click
             var popup = L.popup();
             function onMapClick(e) {
                 popup
@@ -58,6 +66,7 @@ angular.module('app').controller('rootController', [
             }
             map.on('click', onMapClick);
 
+            //GeoJSON to TopoJSON replacement in browser
             L.TopoJSON = L.GeoJSON.extend({  
                 addData: function(jsonData) {    
                     if (jsonData.type === "Topology") {
@@ -74,20 +83,15 @@ angular.module('app').controller('rootController', [
             // Copyright (c) 2013 Ryan Clark
 
             //Checking to See if API Returns ZipCode Model Information
-            var self = this;
-
             self.getZipCodes = function () {
                 $http.get("api/ZipCode")
                     .then(function (response) {
                         console.log(response);
                     })
             }
-
             self.getZipCodes();
 
-            
-
-            //Topo Layer Logic
+            //Core Topo Layer Logic
             var topoLayer = new L.TopoJSON();
 
             $.getJSON('api/JsonFile')
@@ -99,9 +103,7 @@ angular.module('app').controller('rootController', [
                 topoLayer.eachLayer(handleLayer);
             }
 
-            //Styling of Topo Layer
-            //topoLayer.eachLayer(handleLayer);
-
+            //Styling of Topo Layer with additional Layer Logic
             function handleLayer(layer) {
                 //var randomValue = Math.random(),
                 //fillColor = colorScale(randomValue).hex();
@@ -123,6 +125,7 @@ angular.module('app').controller('rootController', [
 
             var testName = "testName";
 
+            //Event Handlers for Mouseover and Mouseout on Layers
             function enterLayer() {
                 //$testName.text(testName).show();
                 console.log("entered new layer");
@@ -141,11 +144,6 @@ angular.module('app').controller('rootController', [
                     opacity: .5
                 });
             }
-
-
-
         });
-
-
     }
 ]);

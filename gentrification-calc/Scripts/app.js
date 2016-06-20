@@ -115,11 +115,34 @@ angular.module('app').controller('rootController', [
                     dashArray: '3'
                 });
 
-                /*layer.on({
+                layer.on({
                     mouseover: enterLayer,
                     mouseout: leaveLayer
-                });*/
+                });
             }
+
+            var testName = "testName";
+
+            function enterLayer() {
+                //$testName.text(testName).show();
+                console.log("entered new layer");
+
+                this.bringToFront();
+                this.setStyle({
+                    weight: 2,
+                    opacity: 1
+                });
+            }
+            function leaveLayer() {
+                //$testName.hide();
+                this.bringToBack();
+                this.setStyle({
+                    weight: 1,
+                    opacity: .5
+                });
+            }
+
+
 
         });
 

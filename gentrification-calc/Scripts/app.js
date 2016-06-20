@@ -44,18 +44,6 @@ angular.module('app').controller('rootController', [
 
             map.setView([36.1666, -86.7833], 12);
 
-            //Testing Adding Marker
-            L.marker([36.1666, -86.7833]).addTo(map);
-
-            //Testing Adding Circle
-            var redcircle = L.circle([36.1666, -86.783], 500,{
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5
-            }).addTo(map);
-
-            redcircle.bindPopup("This will have information.")
-
             //Event Handler for popup on map click
             var popup = L.popup();
             function onMapClick(e) {
@@ -107,7 +95,6 @@ angular.module('app').controller('rootController', [
             function handleLayer(layer) {
                 //var randomValue = Math.random(),
                 //fillColor = colorScale(randomValue).hex();
-                //console.log(layer);
 
                 layer.setStyle({
                     //fillColor: fillColor,
@@ -131,6 +118,8 @@ angular.module('app').controller('rootController', [
                 //$testName.text(testName).show();
                 console.log("This is ", this.feature.properties.ZCTA5CE10);
 
+                info.update(this.feature.properties);
+
                 this.bringToFront();
                 this.setStyle({
                     weight: 2,
@@ -139,12 +128,34 @@ angular.module('app').controller('rootController', [
             }
             function leaveLayer() {
                 //$testName.hide();
+
+                info.update();
+
                 this.bringToBack();
                 this.setStyle({
                     weight: 1,
                     opacity: .5
                 });
             }
+
+            //Custom Info Control
+            var info = L.control();
+
+            info.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+                this.update();
+                return this._div;
+            };
+
+            // method that we will use to update the control based on feature properties passed
+            info.update = function (props) {
+                this._div.innerHTML = '<h4>Gentrification Calculation</h4>' + (props ?
+                    '<b>' + props.ZCTA5CE10 + '</b><br />Calculation will go here'
+                    : 'Hover over a zipcode');
+            };
+
+            info.addTo(map);
+
         });
     }
 ]);

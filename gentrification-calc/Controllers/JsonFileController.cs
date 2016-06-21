@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using System.Web.Http;
 using Newtonsoft.Json;
+using System;
+using System.Web;
 
 namespace GentrificationCalc.Controllers.Api
 {
@@ -8,7 +10,8 @@ namespace GentrificationCalc.Controllers.Api
     {
         public object Get()
         {
-            string allText = File.ReadAllText(@"C:\Users\NSSStudent\Documents\GitHub\gentrification-calc\gentrification-calc\App_Data\zipData.topo.json");
+            var path = HttpContext.Current.Server.MapPath("~/App_Data/zipData.topo.json");
+            string allText = File.ReadAllText(path);
 
             object jsonObject = JsonConvert.DeserializeObject(allText);
             return jsonObject;

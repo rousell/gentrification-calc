@@ -31,7 +31,14 @@ namespace GentrificationCalc.DAL
 
         internal List<PopulationYear> GetPopYear()
         {
-            return context.PopulationYear.ToList<PopulationYear>();
+            return context.PopulationYears.ToList<PopulationYear>();
+        }
+
+        public IEnumerable<PopulationYear> GetPopYearByZip(int ZipDigit)
+        {
+            IEnumerable<PopulationYear> popyears = context.PopulationYears.ToList<PopulationYear>();
+            IEnumerable<PopulationYear> query = popyears.Where(popyear => popyear.ZipCodeDigit == ZipDigit);
+            return query;
         }
 
         public int GetDemographicDataCount()

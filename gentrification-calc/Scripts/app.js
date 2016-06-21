@@ -30,6 +30,62 @@ angular.module('app').controller('rootController', [
             '$scope', 'leaflet', '$http',
     function ($scope, leaflet, $http) {
 
+        $scope.getZipCodes = function () {
+            $http.get("api/ZipCode")
+                .then(function (response) {
+                    console.log(response);
+                })
+        }
+
+        $scope.getZipCodes();
+
+        $scope.getPopYears = function () {
+            $http.get("api/PopulationYear")
+                .then(function (response) {
+                    console.log('All PopYears Data', response);
+                })
+        }
+        $scope.getPopYears();
+
+        $scope.getPopYearsByZip = function (zip) {
+            $http.get("api/PopulationYear/" + zip)
+                .then(function (response) {
+                    console.log('PopYearsByZip ', response);
+                })
+        }
+
+        $scope.getBuildingPermits = function(){
+            $http.get("https://data.nashville.gov/resource/p5r5-bnga.json")
+                .then(function (response) {
+                    console.log(response);
+                })
+        }
+        $scope.getBuildingPermits();
+
+        $scope.getMedianPrice = function (zip) {
+            $http.get("https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MLP.json?api_key=ib6K5S8PzwzPiZFWir8a")
+                .then(function (response) {
+                    //var response.data.dataset.data[0]);
+                    var startDatePrice;
+                    var endDatePrice;
+                    var priceDiff;
+                    for (i = 0; i < response.data.dataset.data.length; i++) {
+                        console.log(response.data.dataset.data[i][0]);
+                        if (response.data.dataset.data[i][0] === "2011-12-31") {
+                            startDatePrice = response.data.dataset.data[i][1];
+                            //console.log(startDatePrice)
+                        }
+                        if (response.data.dataset.data[i][0] === "2014-12-31"){
+                            endDatePrice = response.data.dataset.data[i][1];
+                            //console.log(endDatePrice);
+                        }
+                    }
+                    priceDiff = endDatePrice - startDatePrice;
+                    console.log('Median Price Difference ', priceDiff);
+                    
+                })
+        }
+
         //Promise to Load in Leaflet Map
         leaflet.map.then(function (map) {
             L.tileLayer('http://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -71,13 +127,12 @@ angular.module('app').controller('rootController', [
             // Copyright (c) 2013 Ryan Clark
 
             //Checking to See if API Returns ZipCode Model Information
-            self.getZipCodes = function () {
+            /*self.getZipCodes = function () {
                 $http.get("api/ZipCode")
                     .then(function (response) {
                         console.log(response);
                     })
-            }
-            self.getZipCodes();
+            }*/
 
             //Core Topo Layer Logic
             var topoLayer = new L.TopoJSON();
@@ -116,7 +171,10 @@ angular.module('app').controller('rootController', [
             //Event Handlers for Mouseover and Mouseout on Layers
             function enterLayer() {
                 //$testName.text(testName).show();
-                console.log("This is ", this.feature.properties.ZCTA5CE10);
+                //console.log("This is ", this.feature.properties.ZCTA5CE10);
+
+                $scope.getPopYearsByZip(this.feature.properties.ZCTA5CE10);
+                $scope.getMedianPrice(this.feature.properties.ZCTA5CE10)
 
                 info.update(this.feature.properties);
 
@@ -150,11 +208,15 @@ angular.module('app').controller('rootController', [
             // method that we will use to update the control based on feature properties passed
             info.update = function (props) {
                 this._div.innerHTML = '<h4>Gentrification Calculation</h4>' + (props ?
-                    '<b>' + props.ZCTA5CE10 + '</b><br />Calculation will go here'
-                    : 'Hover over a zipcode');
+                    '<b>' + props.ZCTA5CE10 + '</b><br />Click for more infomation '
+                    : 'Hover over a zipcode')
             };
 
             info.addTo(map);
+
+            //Data Calulation Attempt
+
+
 
         });
     }

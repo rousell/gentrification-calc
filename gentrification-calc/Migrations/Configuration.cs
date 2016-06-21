@@ -9,8 +9,9 @@ namespace GentrificationCalc.Migrations
     using System.Linq;
     using System.Reflection;
     using System.Text;
+    using System.Web;
     using System.Web.Hosting;
-   
+
     internal sealed class Configuration : DbMigrationsConfiguration<GentrificationCalc.DAL.CalcContext>
     {
         public Configuration()
@@ -78,7 +79,7 @@ namespace GentrificationCalc.Migrations
             /*if (System.Diagnostics.Debugger.IsAttached == false)
                 System.Diagnostics.Debugger.Launch();*/
 
-            string resourcePath = "C:\\Users\\NSSStudent\\Documents\\GitHub\\GentrificationCalc\\GentrificationCalc\\DAL\\SeedData\\ACS2011_Cleaned.csv";
+            var resourcePath = HttpContext.Current.Server.MapPath("~/DAL/SeedData/ACS2011_Cleaned.csv");
             using (StreamReader reader = new StreamReader(resourcePath, Encoding.UTF8))
             {
                 CsvReader csvReader = new CsvReader(reader);
@@ -87,7 +88,7 @@ namespace GentrificationCalc.Migrations
                 context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
             }
 
-            string resourcePath2 = "C:\\Users\\NSSStudent\\Documents\\GitHub\\GentrificationCalc\\GentrificationCalc\\DAL\\SeedData\\ACS2012_Cleaned.csv";
+            var resourcePath2 = HttpContext.Current.Server.MapPath("~/DAL/SeedData/ACS2012_Cleaned.csv");
             using (StreamReader reader = new StreamReader(resourcePath2, Encoding.UTF8))
             {
                 CsvReader csvReader = new CsvReader(reader);
@@ -96,7 +97,7 @@ namespace GentrificationCalc.Migrations
                 context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
             }
 
-            string resourcePath3 = "C:\\Users\\NSSStudent\\Documents\\GitHub\\GentrificationCalc\\GentrificationCalc\\DAL\\SeedData\\ACS2013_Cleaned.csv";
+            var resourcePath3 = HttpContext.Current.Server.MapPath("~/DAL/SeedData/ACS2013_Cleaned.csv");
             using (StreamReader reader = new StreamReader(resourcePath3, Encoding.UTF8))
             {
                 CsvReader csvReader = new CsvReader(reader);
@@ -105,7 +106,7 @@ namespace GentrificationCalc.Migrations
                 context.PopulationYears.AddOrUpdate(p => p.ZipCodeDigit, populations);
             }
 
-            string resourcePath4 = "C:\\Users\\NSSStudent\\Documents\\GitHub\\GentrificationCalc\\GentrificationCalc\\DAL\\SeedData\\ACS2014_Cleaned.csv";
+            var resourcePath4 = HttpContext.Current.Server.MapPath("~/DAL/SeedData/ACS2014_Cleaned.csv");
             using (StreamReader reader = new StreamReader(resourcePath4, Encoding.UTF8))
             {
                 CsvReader csvReader = new CsvReader(reader);

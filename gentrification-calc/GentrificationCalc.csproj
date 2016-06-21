@@ -248,6 +248,7 @@
     <EmbeddedResource Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\JsonFileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PopulationYearController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\ZipCodeController.cs" />
     <Compile Include="DAL\CalcContext.cs" />
@@ -323,6 +324,7 @@
     <EmbeddedResource Include="DAL\SeedData\ACS2014_Cleaned.csv" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="App_Data\zipData.json" />
+    <Content Include="App_Data\zipData.topo.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -353,8 +355,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\Api\" />
-    <Folder Include="Controllers\Web\" />
     <Folder Include="Scripts\data\" />
   </ItemGroup>
   <ItemGroup>

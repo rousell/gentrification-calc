@@ -33,33 +33,29 @@ angular.module('app').controller('rootController', [
         $scope.ZipCodes = [];
         $scope.mathArray = [];
         $scope.getZipCodes = function () {
+            var def = $q.defer();
             $http.get("api/ZipCode")
-                .then(function (response) {
+                .then(function successCallBack(response) {
                     for (var i = 0; i < response.data.length; i++) {
                         var currentZip = response.data[i].ZipCodeDigit;
 
-                        //console.log($scope.getMedianPrice(currentZip).resolve);
-                        //console.log($scope.getMedianPrice(currentZip).medianprice.$$state.value);
+                        //$scope.getMedianPrice(currentZip);
 
-                        $scope.ZipCodes.push(currentZip);
-                        $scope.mathArray.push({
-                            zip: currentZip,
-                            medianprice: $scope.getMedianPrice(currentZip)
-                        })
-
-                        console.log($scope.mathArray[i].zip);
-                        //console.log($scope.mathArray[i].medianprice.resolve());
-
-                        $scope.mathArray[i].medianprice.then(function (p) {
-                            console.log(p);
-                            $scope.mathArray.medianprice = p;
+                        $scope.getMedianPrice(currentZip).then(function (price) {
+                            //$scope.mathArray.medianprice = p;
+                            $scope.mathArray.push({
+                                zip: currentZip,
+                                medianprice: price
+                            })
                         });
-
-                        //console.log("price difference looped through zip codes ", priceDifference);
                     }
-                    console.log("mathArray, ", $scope.mathArray);
-                    console.log("this is from within get function for ZC ", $scope.ZipCodes);
-                })
+                    console.log("Testing MathArray Output, ", $scope.mathArray);
+                    def.resolve($scope.mathArray);
+                }, function errorCallBack(response) {
+                    def.reject(response);
+                    //console.log("GetMedianPrice Rejecting Data: ", response);
+                });
+            return def.promise;
         }
         $scope.getZipCodes();
 
@@ -89,7 +85,7 @@ angular.module('app').controller('rootController', [
         $scope.getMedianPrice = function (zip) {
             var def = $q.defer();
             $http.get("https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MLP.json?api_key=ib6K5S8PzwzPiZFWir8a")
-                .then(function (response) {
+                .then(function successCallBack(response) {
                     //var response.data.dataset.data[0]);
                     var startDatePrice;
                     var endDatePrice;
@@ -106,46 +102,12 @@ angular.module('app').controller('rootController', [
                     priceDiff = endDatePrice - startDatePrice;
 
                     def.resolve(priceDiff);
-                }, function(response){
-                    def.reject(response)
+                }, function errorCallBack(response) {
+                    def.reject(response);
+                    //console.log("GetMedianPrice Rejecting Data: ", response);
                 });
             return def.promise;
         }
-
-        $scope.getMedianPriceCopy = function (zip) {
-            //var def = $q.defer;
-            $http.get("https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MLP.json?api_key=ib6K5S8PzwzPiZFWir8a")
-                .then(function (response) {
-                    //var response.data.dataset.data[0]);
-
-
-                    var startDatePrice;
-                    var endDatePrice;
-                    var priceDiff;
-                    for (i = 0; i < response.data.dataset.data.length; i++) {
-                        //console.log(response.data.dataset.data[i][0]);
-                        if (response.data.dataset.data[i][0] === "2011-12-31") {
-                            startDatePrice = response.data.dataset.data[i][1];
-                        }
-                        if (response.data.dataset.data[i][0] === "2014-12-31"){
-                            endDatePrice = response.data.dataset.data[i][1];
-                        }
-                    }
-                    priceDiff = endDatePrice - startDatePrice;
-
-                    //Define Price Difference for all Zips in Object within for loop!
-
-                    //def.resolve(priceDiff);
-                    //console.log('Median Price Difference ', priceDiff);
-                })
-            //return def.promise;
-        }
-
-        $scope.calcMath = function () {
-
-        }
-
-        
 
         //Promise to Load in Leaflet Map
         leaflet.map.then(function (map) {
@@ -261,7 +223,7 @@ angular.module('app').controller('rootController', [
                 //console.log("This is ", this.feature.properties.ZCTA5CE10);
 
                 $scope.getPopYearsByZip(this.feature.properties.ZCTA5CE10);
-                $scope.getMedianPrice(this.feature.properties.ZCTA5CE10)
+                $scope.getMedianPrice(this.feature.properties.ZCTA5CE10);
 
                 info.update(this.feature.properties);
 

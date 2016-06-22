@@ -27,22 +27,31 @@ angular.module('app').directive('leaflet', [
 ]);
 
 angular.module('app').controller('rootController', [
-            '$scope', 'leaflet', '$http',
-    function ($scope, leaflet, $http) {
+            '$scope', 'leaflet', '$http', '$q',
+    function ($scope, leaflet, $http, $q) {
 
+        $scope.ZipCodes = [];
         $scope.getZipCodes = function () {
+            //var def = $q.defer();
             $http.get("api/ZipCode")
                 .then(function (response) {
-                    console.log(response);
+                    for (var i = 0; i < response.data.length; i++) {
+                        $scope.ZipCodes.push(response.data[i].ZipCodeDigit);
+                        console.log(response.data[i].ZipCodeDigit);
+                        console.log("what does this show ",$scope.getMedianPrice(37203));
+                        //console.log("price difference looped through zip codes ", priceDifference);
+                    }
+                    console.log("this is from within get function for ZC ", $scope.ZipCodes);
+                    //def.resolve()
                 })
+            //return def.promise;
         }
-
         $scope.getZipCodes();
 
         $scope.getPopYears = function () {
             $http.get("api/PopulationYear")
                 .then(function (response) {
-                    console.log('All PopYears Data', response);
+                    //console.log('All PopYears Data', response);
                 })
         }
         $scope.getPopYears();
@@ -50,41 +59,52 @@ angular.module('app').controller('rootController', [
         $scope.getPopYearsByZip = function (zip) {
             $http.get("api/PopulationYear/" + zip)
                 .then(function (response) {
-                    console.log('PopYearsByZip ', response);
+                    //console.log('PopYearsByZip ', response);
                 })
         }
 
         $scope.getBuildingPermits = function(){
             $http.get("https://data.nashville.gov/resource/p5r5-bnga.json")
                 .then(function (response) {
-                    console.log(response);
+                    //console.log(response);
                 })
         }
         $scope.getBuildingPermits();
 
         $scope.getMedianPrice = function (zip) {
+            //var def = $q.defer;
             $http.get("https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MLP.json?api_key=ib6K5S8PzwzPiZFWir8a")
                 .then(function (response) {
                     //var response.data.dataset.data[0]);
+
+
                     var startDatePrice;
                     var endDatePrice;
                     var priceDiff;
                     for (i = 0; i < response.data.dataset.data.length; i++) {
-                        console.log(response.data.dataset.data[i][0]);
+                        //console.log(response.data.dataset.data[i][0]);
                         if (response.data.dataset.data[i][0] === "2011-12-31") {
                             startDatePrice = response.data.dataset.data[i][1];
-                            //console.log(startDatePrice)
                         }
                         if (response.data.dataset.data[i][0] === "2014-12-31"){
                             endDatePrice = response.data.dataset.data[i][1];
-                            //console.log(endDatePrice);
                         }
                     }
                     priceDiff = endDatePrice - startDatePrice;
-                    console.log('Median Price Difference ', priceDiff);
-                    
+
+                    //Define Price Difference for all Zips in Object within for loop!
+
+                    //def.resolve(priceDiff);
+                    //console.log('Median Price Difference ', priceDiff);
                 })
+            //return def.promise;
         }
+
+        $scope.calcMath = function () {
+
+        }
+
+        
 
         //Promise to Load in Leaflet Map
         leaflet.map.then(function (map) {
@@ -214,7 +234,7 @@ angular.module('app').controller('rootController', [
 
             info.addTo(map);
 
-            //Data Calulation Attempt
+            //Data Calculation Attempt
 
 
 

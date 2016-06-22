@@ -31,20 +31,35 @@ angular.module('app').controller('rootController', [
     function ($scope, leaflet, $http, $q) {
 
         $scope.ZipCodes = [];
+        $scope.mathArray = [];
         $scope.getZipCodes = function () {
-            //var def = $q.defer();
             $http.get("api/ZipCode")
                 .then(function (response) {
                     for (var i = 0; i < response.data.length; i++) {
-                        $scope.ZipCodes.push(response.data[i].ZipCodeDigit);
-                        console.log(response.data[i].ZipCodeDigit);
-                        console.log("what does this show ",$scope.getMedianPrice(37203));
+                        var currentZip = response.data[i].ZipCodeDigit;
+
+                        //console.log($scope.getMedianPrice(currentZip).resolve);
+                        //console.log($scope.getMedianPrice(currentZip).medianprice.$$state.value);
+
+                        $scope.ZipCodes.push(currentZip);
+                        $scope.mathArray.push({
+                            zip: currentZip,
+                            medianprice: $scope.getMedianPrice(currentZip)
+                        })
+
+                        console.log($scope.mathArray[i].zip);
+                        //console.log($scope.mathArray[i].medianprice.resolve());
+
+                        $scope.mathArray[i].medianprice.then(function (p) {
+                            console.log(p);
+                            $scope.mathArray.medianprice = p;
+                        });
+
                         //console.log("price difference looped through zip codes ", priceDifference);
                     }
+                    console.log("mathArray, ", $scope.mathArray);
                     console.log("this is from within get function for ZC ", $scope.ZipCodes);
-                    //def.resolve()
                 })
-            //return def.promise;
         }
         $scope.getZipCodes();
 
@@ -72,6 +87,32 @@ angular.module('app').controller('rootController', [
         $scope.getBuildingPermits();
 
         $scope.getMedianPrice = function (zip) {
+            var def = $q.defer();
+            $http.get("https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MLP.json?api_key=ib6K5S8PzwzPiZFWir8a")
+                .then(function (response) {
+                    //var response.data.dataset.data[0]);
+                    var startDatePrice;
+                    var endDatePrice;
+                    var priceDiff;
+                    for (i = 0; i < response.data.dataset.data.length; i++) {
+                        //console.log(response.data.dataset.data[i][0]);
+                        if (response.data.dataset.data[i][0] === "2011-12-31") {
+                            startDatePrice = response.data.dataset.data[i][1];
+                        }
+                        if (response.data.dataset.data[i][0] === "2014-12-31") {
+                            endDatePrice = response.data.dataset.data[i][1];
+                        }
+                    }
+                    priceDiff = endDatePrice - startDatePrice;
+
+                    def.resolve(priceDiff);
+                }, function(response){
+                    def.reject(response)
+                });
+            return def.promise;
+        }
+
+        $scope.getMedianPriceCopy = function (zip) {
             //var def = $q.defer;
             $http.get("https://www.quandl.com/api/v3/datasets/ZILL/Z" + zip + "_MLP.json?api_key=ib6K5S8PzwzPiZFWir8a")
                 .then(function (response) {
@@ -166,13 +207,39 @@ angular.module('app').controller('rootController', [
                 topoLayer.eachLayer(handleLayer);
             }
 
+            $scope.color = function (num) {
+                return num > 200000 ? '#800026' :
+                       num > 150000 ? '#BD0026' :
+                       num > 100000 ? '#E31A1C' :
+                       num > 50000 ? '#FC4E2A' :
+                       num > 25000 ? '#FD8D3C' :
+                       num > 10000 ? '#FEB24C' :
+                       num > 5000 ? '#FED976' :
+                                 '#FFEDA0';
+            }
+
             //Styling of Topo Layer with additional Layer Logic
             function handleLayer(layer) {
                 //var randomValue = Math.random(),
                 //fillColor = colorScale(randomValue).hex();
 
+                //console.log("This is the information on Layers: ", layer);
+
+                var median;
+
+                for (var i = 0; i < $scope.mathArray.length; i++) {
+                    if ($scope.mathArray[i] == layer.feature.properties.ZCTA5CE10) {
+                        $scope.mathArray[i].medianprice.then(function (p) {
+                            median = p;
+                            console.log(median);
+                        });
+                    }
+                }
+
+                
+
                 layer.setStyle({
-                    //fillColor: fillColor,
+                    fillColor: '#FFEDA0',
                     //fillOpacity: 1,
                     color: 'navy',
                     weight: 1,

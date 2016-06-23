@@ -34,11 +34,11 @@ angular.module('app').controller('rootController', [
         $scope.mathArray = [];
 
         function color(num) {
-            return num > 200000 ? '#800026' :
-                   num > 150000 ? '#BD0026' :
-                   num > 100000 ? '#E31A1C' :
-                   num > 50000 ? '#FC4E2A' :
-                   num > 25000 ? '#FD8D3C' :
+            return num > 20000 ? '#800026' :
+                   num > 18000 ? '#BD0026' :
+                   num > 15000 ? '#E31A1C' :
+                   num > 12000 ? '#FC4E2A' :
+                   num > 11000 ? '#FD8D3C' :
                    num > 10000 ? '#FEB24C' :
                    num > 5000 ? '#FED976' :
                              '#FFEDA0';
@@ -52,12 +52,12 @@ angular.module('app').controller('rootController', [
                         var currentZip = response.data[i].ZipCodeDigit;
 
                         //$scope.getMedianPrice(currentZip);
-                        getMedianPrice(currentZip).then(function (price) {
-                            console.log("Check for Price in for loop: ", price);
+                        getMedianPrice(currentZip).then(function (pricecurrentZip) {
+                            console.log("Check for Price in for loop: ", pricecurrentZip[0], " and color ", color(pricecurrentZip[0])," and also Zip ", pricecurrentZip[1]);
                             $scope.mathArray.push({
-                                zip: currentZip,
-                                medianprice: price,
-                                color: color(price)
+                                zip: pricecurrentZip[1],
+                                medianprice: pricecurrentZip[0],
+                                color: color(pricecurrentZip[0])
                             })
                         });
                     }
@@ -105,7 +105,8 @@ angular.module('app').controller('rootController', [
                             endDatePrice = response.data.dataset.data[i][1];
                         }
                     }
-                     return priceDiff = endDatePrice - startDatePrice;
+                    priceDiff = endDatePrice - startDatePrice;
+                    return [priceDiff, zip];
                 });
         }
 
@@ -176,7 +177,7 @@ angular.module('app').controller('rootController', [
 
                 //console.log("This is the information on Layers: ", layer);
 
-                $scope.colorvalue = '#21B3DC';
+                $scope.colorvalue = '#D3D3D3';
                 $scope.mathArray
                 for (var i = 0; i < $scope.mathArray.length; i++) {
                     if ($scope.mathArray[i].zip == layer.feature.properties.ZCTA5CE10) {
@@ -188,8 +189,8 @@ angular.module('app').controller('rootController', [
 
                 layer.setStyle({
                     fillColor: $scope.colorvalue,
-                    //fillOpacity: 1,
-                    color: 'navy',
+                    fillOpacity: 0.7,
+                    color: 'black',
                     weight: 1,
                     opacity: 1,
                     dashArray: '3'
